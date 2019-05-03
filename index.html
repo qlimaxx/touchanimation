@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html><head>
 <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-    <!-- Copyright © Microsoft Corporation. All Rights Reserved. -->
-    <!-- Demo Author: Matt Rakow, Microsoft Corporation -->   
+    <!-- Copyright ï¿½ Microsoft Corporation. All Rights Reserved. -->
+    <!-- Demo Author: Matt Rakow, Microsoft Corporation -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Touch your way to a faster experience.">
     <meta name="t_omni_demopage" content="1">
@@ -13,24 +13,38 @@
     <link rel="stylesheet" type="text/css" href="Touch%20Effects_files/BaseStyles.css">
     <link rel="stylesheet" type="text/css" href="Touch%20Effects_files/ReturnAndShareControls.css">
     <link rel="stylesheet" type="text/css" href="Touch%20Effects_files/Demo.css">
-    <link rel="shortcut icon" href="https://testdrive-archive.azurewebsites.net/Includes/Image/FavIcon.ico">    
+    <link rel="shortcut icon" href="https://testdrive-archive.azurewebsites.net/Includes/Image/FavIcon.ico">
     <script type="text/javascript" src="Touch%20Effects_files/FeatureDetection.js" data-detect="canvas"></script>
+    <style>
+      .center-screen {
+        background-color: #FF4136;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+      }
+    </style>
 </head>
 <body onload="setupWorld()">
+  <div class="center-screen" id="center-screen"></div>
     <div id="ReturnAndShareControls"></div>
     <h1 id="DemoTitle">
         Touch Effects
     </h1>
     <div id="DemoScreenreaderText">
-        This page contains a canvas element registered for DOM touch 
+        This page contains a canvas element registered for DOM touch
 events.  Special effects are applied in response to touch and gesture on
- the canvas. The buttons control simulation settings.  This demo 
+ the canvas. The buttons control simulation settings.  This demo
 supports multitouch on Windows 8.
     </div>
     <div id="DemoContent">
-        <div id="DemoControls" class="democontrolsactive">
+        <div id="DemoControls" class="democontrolsactive" style="background:transparent">
             <div class="controlgroup">
-                <div class="controlgroupheader">
+                <div class="controlgroupheader" style="color:#fff">
                     Physics mode
                 </div>
                 <div class="controlbuttongroup">
@@ -39,7 +53,7 @@ supports multitouch on Windows 8.
                 </div>
             </div>
             <div class="controlgroup">
-                <div class="controlgroupheader">
+                <div class="controlgroupheader" style="color:#fff">
                     Particle tethers
                 </div>
                 <div class="controlbuttongroup">
@@ -48,7 +62,7 @@ supports multitouch on Windows 8.
                 </div>
             </div>
             <div class="controlgroup">
-                <div class="controlgroupheader">
+                <div class="controlgroupheader" style="color:#fff">
                     Draw mode
                 </div>
                 <div class="controlbuttongroup">
@@ -59,7 +73,7 @@ supports multitouch on Windows 8.
                 </div>
             </div>
             <div class="controlgroup">
-                <div class="controlgroupheader">
+                <div class="controlgroupheader" style="color:#fff">
                     Blur effect
                 </div>
                 <div class="controlbuttongroup">
@@ -75,9 +89,9 @@ supports multitouch on Windows 8.
     <img id="ball" style="display: none;" alt="Ball" src="Touch%20Effects_files/ball.png">
     <img id="circle" style="display: none;" alt="Circle" src="Touch%20Effects_files/circle.png">
     <img id="bee" style="display: none;" alt="Bee" src="Touch%20Effects_files/bee.png">
-    
+
     <script type="text/javascript" src="Touch%20Effects_files/Demo.js"></script>
-    
+
     <script type="text/javascript" src="Touch%20Effects_files/TestDriveCommon.js"></script>
     <script type="text/javascript" src="Touch%20Effects_files/ReturnAndShareControls.js"></script>
 

@@ -48,9 +48,29 @@ var touchCount = 0;
 
 /* initial settings */
 var physicsMode = PHYSICS_MODE_GRAVITY_WELL;
-var tetherMode = TETHER_MODE_OFF;
+var tetherMode = TETHER_MODE_ON;
+manuallyTurnButtonOn("tetheronbutton");
 var drawMode = DRAW_MODE_RAINBOWS;
 var blurMode = BLUR_MODE_ON;
+
+var mouseStatus = '';
+
+document.addEventListener("mousedown", function(e) {
+    switch (e.buttons) {
+        case 1: mouseStatus = 'LEFT'; break;
+        case 2: mouseStatus = 'RIGHT'; break;
+    }
+}, false);
+
+document.addEventListener("mouseup", function(e) {mouseStatus = ''}, false);
+
+document.addEventListener("keypress", function(e){ if(e.keyCode == 116){ toggleControls(); } }, false);
+// document.addEventListener("keypress", function(e){ if(e.keyCode == 101){ toggleControls(); } }, false);
+document.addEventListener("keypress", function(e){ if(e.keyCode == 113){ setTetherMode(TETHER_MODE_ON); manuallyTurnButtonOn("tetheronbutton"); } }, false);
+document.addEventListener("keypress", function(e){ if(e.keyCode == 119){ setTetherMode(TETHER_MODE_OFF); manuallyTurnButtonOn("tetheroffbutton"); } }, false);
+document.addEventListener("keypress", function(e){ if(e.keyCode == 32){ document.getElementById('center-screen').style.display = 'block'; } }, false);
+document.addEventListener("keyup", function(e){ if(e.keyCode == 32){ document.getElementById('center-screen').style.display = 'none'; } }, false);
+document.addEventListener("keypress", function(e){ if(e.keyCode == 101){ resetState(); } }, false);
 
 document.addEventListener("DOMContentLoaded", sizeCanvas, false);
 
@@ -249,9 +269,14 @@ function setTetherMode(mode) {
 
 function stepPhysics() {
     // apply force to update the new frame's velocity
-    switch(physicsMode) {
-        case PHYSICS_MODE_GRAVITY_WELL : applyGravity(); break;
-        case PHYSICS_MODE_REPULSION : applyRepulsion(); break;
+    // switch(physicsMode) {
+    //     case PHYSICS_MODE_GRAVITY_WELL : applyGravity(); break;
+    //     case PHYSICS_MODE_REPULSION : applyRepulsion(); break;
+    // }
+
+    switch(mouseStatus) {
+        case 'LEFT' : applyGravity(); break;
+        case 'RIGHT' : applyRepulsion(); break;
     }
 
     if(tetherMode == TETHER_MODE_ON) {
@@ -453,14 +478,14 @@ function coveredInBees() {
 }
 
 function resetState() {
-    setPhysicsMode(PHYSICS_MODE_GRAVITY_WELL);
-    manuallyTurnButtonOn("gravitybutton");
-    setDrawMode(DRAW_MODE_RAINBOWS);
-    manuallyTurnButtonOn("rainbowbutton");
-    setBlurMode(BLUR_MODE_ON);
-    manuallyTurnButtonOn("bluronbutton");
-    setTetherMode(TETHER_MODE_OFF);
-    manuallyTurnButtonOn("tetheroffbutton");
+    // setPhysicsMode(PHYSICS_MODE_GRAVITY_WELL);
+    // manuallyTurnButtonOn("gravitybutton");
+    // setDrawMode(DRAW_MODE_RAINBOWS);
+    // manuallyTurnButtonOn("rainbowbutton");
+    // setBlurMode(BLUR_MODE_ON);
+    // manuallyTurnButtonOn("bluronbutton");
+    // setTetherMode(TETHER_MODE_OFF);
+    // manuallyTurnButtonOn("tetheroffbutton");
 
     destroyParticles();
     addParticles();
